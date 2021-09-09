@@ -28,8 +28,20 @@ Blockchain.blocks.push({
 });
 
 // TODO: insert each line into blockchain
-// for (let line of poem) {
-// }
+for (let line of poem) {
+
+}
+
+// Create a function called createBlock()
+// 'index'
+// 'prevHash'
+// 'data'
+// 'timestamp'
+// 'hash'
+
+function createBlock(data) {
+
+}
 
 // console.log(`Blockchain is valid: ${verifyChain(Blockchain)}`);
 
