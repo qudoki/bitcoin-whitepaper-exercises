@@ -40,7 +40,14 @@ for (let line of poem) {
 // 'hash'
 
 function createBlock(data) {
-
+	let block = {
+		index: Blockchain.blocks.length,
+		prevHash: Blockchain.blocks[Blockchains.blocks.length - 1].hash,
+		data: data,
+		timestamp: Date.now()
+	}
+	// can't include within object, because it becomes circular loop, can't hash the hash
+	block.hash = blockHash(block)
 }
 
 // console.log(`Blockchain is valid: ${verifyChain(Blockchain)}`);
@@ -51,5 +58,7 @@ function createBlock(data) {
 function blockHash(bl) {
 	return crypto.createHash("sha256").update(
 		// TODO: use block data to calculate hash
+		// `index`, `prevHash`, `data`, and `timestamp`
+		`${bl.index};${bl.prevHash};${bl.data};${bl.timestamp}`
 	).digest("hex");
 }
