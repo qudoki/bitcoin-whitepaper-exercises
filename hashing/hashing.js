@@ -49,7 +49,7 @@ function createBlock(data) {
 	}
 	// can't include within object, because it becomes circular loop, can't hash the hash
 	block.hash = blockHash(block);
-	Blockchain.blocks.push(bl);
+	Blockchain.blocks.push(block);
 	console.log(block);
 	return block;
 }
