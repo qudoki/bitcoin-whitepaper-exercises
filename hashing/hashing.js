@@ -29,9 +29,10 @@ Blockchain.blocks.push({
 
 // TODO: insert each line into blockchain
 for (let line of poem) {
-
+	createBlock(line)
 }
 
+// Part 1
 // Create a function called createBlock()
 // 'index'
 // 'prevHash'
@@ -47,8 +48,14 @@ function createBlock(data) {
 		timestamp: Date.now()
 	}
 	// can't include within object, because it becomes circular loop, can't hash the hash
-	block.hash = blockHash(block)
+	block.hash = blockHash(block);
+	Blockchain.blocks.push(bl);
+	console.log(block);
+	return block;
 }
+
+// Part 2
+
 
 // console.log(`Blockchain is valid: ${verifyChain(Blockchain)}`);
 
