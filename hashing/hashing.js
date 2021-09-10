@@ -55,10 +55,36 @@ function createBlock(data) {
 }
 
 // Part 2
+console.log(`Blockchain is valid: ${verifyChain(Blockchain)}`);
 
+function verifyBlock() {
+	if (bl.data == null) return false;
+	if (bl.index = 0) {
+		if (bl.hash !== "000000") return false;
+	}
+	else {
+		if (!bl.prevHash) return false;
+		if (!(
+			typeof bl.index === "number" &&
+			Number.isInteger(bl.index) &&
+			bl.index > 0
+		)) {
+			return false;
+		}
+		if (bl.hash !== blockHash(bl)) return false;
+	}
+	return true;
+}
 
-// console.log(`Blockchain is valid: ${verifyChain(Blockchain)}`);
-
+function verifyChain(chain) {
+	let prevHash;
+	for (let bl of chain.blocks) {
+		if (prevHash && bl.prevHash !== prevHash) return false;
+		if (!verifyBlock(bl)) return false;
+		prevHash = bl.hash;
+	}
+	return true;
+}
 
 // **********************************
 
