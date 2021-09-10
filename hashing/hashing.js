@@ -40,6 +40,9 @@ for (let line of poem) {
 // 'timestamp'
 // 'hash'
 
+console.log(`Blockchain is valid: ${verifyChain(Blockchain)}`);
+
+
 function createBlock(data) {
 	let block = {
 		index: Blockchain.blocks.length,
@@ -54,12 +57,21 @@ function createBlock(data) {
 	return block;
 }
 
-// Part 2
-console.log(`Blockchain is valid: ${verifyChain(Blockchain)}`);
 
-function verifyBlock() {
+function blockHash(bl) {
+	return crypto.createHash("sha256").update(
+		// TODO: use block data to calculate hash
+		// `index`, `prevHash`, `data`, and `timestamp`
+		`${bl.index};${bl.prevHash};${bl.data};${bl.timestamp}`
+	).digest("hex");
+}
+
+
+// Part 2
+
+function verifyBlock(bl) {
 	if (bl.data == null) return false;
-	if (bl.index = 0) {
+	if (bl.index === 0) {
 		if (bl.hash !== "000000") return false;
 	}
 	else {
@@ -77,7 +89,7 @@ function verifyBlock() {
 }
 
 function verifyChain(chain) {
-	let prevHash;
+	var prevHash;
 	for (let bl of chain.blocks) {
 		if (prevHash && bl.prevHash !== prevHash) return false;
 		if (!verifyBlock(bl)) return false;
@@ -88,10 +100,3 @@ function verifyChain(chain) {
 
 // **********************************
 
-function blockHash(bl) {
-	return crypto.createHash("sha256").update(
-		// TODO: use block data to calculate hash
-		// `index`, `prevHash`, `data`, and `timestamp`
-		`${bl.index};${bl.prevHash};${bl.data};${bl.timestamp}`
-	).digest("hex");
-}
