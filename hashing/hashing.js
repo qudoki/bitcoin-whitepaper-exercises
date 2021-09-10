@@ -43,7 +43,7 @@ for (let line of poem) {
 function createBlock(data) {
 	let block = {
 		index: Blockchain.blocks.length,
-		prevHash: Blockchain.blocks[Blockchains.blocks.length - 1].hash,
+		prevHash: Blockchain.blocks[Blockchain.blocks.length - 1].hash,
 		data: data,
 		timestamp: Date.now()
 	}
