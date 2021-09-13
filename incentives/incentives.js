@@ -47,6 +47,9 @@ countMyEarnings();
 
 function addPoem() {
 	// TODO: add lines of poem as transactions to the transaction-pool
+	// for (let line of poem) {
+	// 	transactionPool.push(line)
+	// }
 }
 
 function processPool() {
